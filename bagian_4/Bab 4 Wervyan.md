@@ -5,7 +5,7 @@ Tes untuk paragraf
 
 abcdefghij
 
-Tes untuk *numbered list*
+Tes untuk **numbered list**
 
 1.  a
 2.  b
