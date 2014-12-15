@@ -7,7 +7,7 @@ Pada dasarnya ketika *user* mengakses data dalam jumlah yang banyak ke *server* 
 
 *Memcache* bertujuan untuk menyimpan data atau informasi yang peting dengan kapasitas terbatas, sehingga *user* tidak perlu lagi mengakses ke *server*/*cloud* terlalu lama, dengan tujuan mempercepat proses *retrieve* data.
 
-Gambar 1
+![enter image description here](https://lh3.googleusercontent.com/Jla-J6wyOG3KYJygbsUZweYr8YF8kM44L_ZuPGp6Vg=s0 "1.png")
 
 Sifat *memcache* :
 
@@ -28,7 +28,7 @@ Lesson 5 goals :
 
 *Objectify* dapat dilakukan dengan menambahkan *@Cache* pada *source code*
 
-Gambar 2
+![enter image description here](https://lh5.googleusercontent.com/hh2EFn8sk93luVN1uL4M9AlGMH9CTmEaHkFzvtSWXQ=s0 "2.png")
 
 Penggunaan *memcache* pada *conference* dan *profile class*, ada beberapa langkah yang harus dilakukan :
 
@@ -44,19 +44,19 @@ Sebelum melakukan *create conference*, *user* harus melakukan proses *copy* (web
 
 Penggunaan *memcache* pada *announcement* dapat dilakuakn dengan menambahkan *class* baru yaitu Announcement.java. Proses *set announcement* dilakukan pada beberapa *class* sebagai berikut :
 
-Gambar 3
+![enter image description here](https://lh6.googleusercontent.com/PdZzRIFtklKIf-ivw3mecMUyzV1CP9Q8b5vdiCxWlA=s0 "3.png")
 
 *Import memcache service* pada *class* SetAnnouncementServlet.java
 
-Gambar 4
+![enter image description here](https://lh3.googleusercontent.com/4K6LwADxhl4jxm2MLZQ_ZMdQxbBzUV0e5TKc1d6wlA=s0 "4.png")
 
 *Set announcement* untuk mengakses *class conference* pada web.xml
 
-Gambar 5
+![enter image description here](https://lh6.googleusercontent.com/7PrFJLXOI19F54_S-m8e2CxAGZBZslNcQtWtCKNKmg=s0 "5.png")
 
 *Set get announcement* untuk mengakses *class conference* pada ConferenceApi.java 
 
-Gambar 6
+![enter image description here](https://lh5.googleusercontent.com/Fe4SFZdLjzilU41Wz13tLIR2-Ew6QRGOJ6jQ0M9mJg=s0 "6.png")
 
 Proses *get announcement* dapat dilakukan sebagai berikut :
 
