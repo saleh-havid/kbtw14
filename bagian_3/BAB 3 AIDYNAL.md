@@ -56,6 +56,7 @@ Untuk mencoba menggunakan entity dan id, kita buka *Com.googlecode.objectify.ann
 ![enter image description here](https://lh4.googleusercontent.com/-ZEVc6HiVkvc/VI8MiHbXqII/AAAAAAAAAFc/l6i7QWW2E2g/w493-h239-no/the+key+1.jpg)
  
  ![enter image description here](https://lh4.googleusercontent.com/-K71qgkbDeIE/VI8MnW252nI/AAAAAAAAAFw/BoZnrFgykMA/w750-h230-no/the+key.jpg)
+
 Setiap Entity yang kita generate akan menghasilkan KEY pada data store. Setiap entitas pasti punya key, jika tidak didefinisikan, maka sistem akan menciptakan sebuah key secara otomatis. Seperti yang terlihat pada gambar diatas.
 
 
@@ -63,11 +64,11 @@ Id bukan lah key, melainkan sebuah kode unique untuk men-generate key. Sebuah ke
 
 Bentuk dari key-value store berupa ordered tuple yang berisi key value. Nama lain dari key value ini adalah associative array, map, atau dictionary. Ketika menggunakan key-value store, sepasang data, key dan value, dimasukkan ke database berupa dictionary dan value dapat diambil kembali berdasarkan key yang dimiliki.
 >-Ada beberapa hal yang harus diperhatikan dalam key-value store antara lain:
-•	**Query**
+>- **Query**
 Tidak ada proses query data dalam key-value store, kecuali berdasarkan key.
-•	**Skema** 
+>- **Skema** 
 Dalam key-value store, skema adalah string, semua value dianggap blop. Aplikasi client lah yang menentukan bagaimana mem-parsing data.
-•	**Penggunan**
+>- **Penggunan**
 Key-value store sangat berguna ketika pengaksesan data dilakukan menggunakan key. 
 Pengaksesan data menggunakan key  sudah cukup umum digunakan. Pada beberapa bagian aplikasi seperti user profiles,user sessions, shopping carts, dan lain-lain, data/value disimpan dalam sebuah data store sehingga mudah ditangani (one request to read, one request to write), hanya dengan menerjemahkan suatu key.
 
