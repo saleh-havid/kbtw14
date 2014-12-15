@@ -9,14 +9,14 @@ Pada dasarnya ketika *user* mengakses data dalam jumlah yang banyak ke *server* 
 
 ![enter image description here](https://lh3.googleusercontent.com/Jla-J6wyOG3KYJygbsUZweYr8YF8kM44L_ZuPGp6Vg=s0 "1.png")
 
-####Sifat *memcache*#### :
+####Sifat *memcache* :
 
 + Bukan sebagai tempat penyimpanan data secara permanen
 + Tidak ada mekanisme *security* pada *memcache*
 + Semua data dapat disimpan pada *memcache*
 + *Low latency*
 
-####Lesson 5 goals#### :
+####Lesson 5 goals :
 
 1.	*Save announcements in memcache*
 2.	*Use push queue to send a confirmation email*
