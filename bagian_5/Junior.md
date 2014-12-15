@@ -44,19 +44,19 @@ Sebelum melakukan *create conference*, *user* harus melakukan proses *copy* (web
 
 Penggunaan *memcache* pada *announcement* dapat dilakuakn dengan menambahkan *class* baru yaitu Announcement.java. Proses *set announcement* dilakukan pada beberapa *class* sebagai berikut :
 
-![enter image description here](https://lh6.googleusercontent.com/PdZzRIFtklKIf-ivw3mecMUyzV1CP9Q8b5vdiCxWlA=s0 "3.png")
+![enter image description here](https://lh4.googleusercontent.com/a3z_SpioPvFa_0JB1gOOB1PD-iu9hZRVW9Biy3hW598=s0 "3.png")
 
 *Import memcache service* pada *class* SetAnnouncementServlet.java
 
-![enter image description here](https://lh3.googleusercontent.com/4K6LwADxhl4jxm2MLZQ_ZMdQxbBzUV0e5TKc1d6wlA=s0 "4.png")
+![enter image description here](https://lh4.googleusercontent.com/ovLTYifr2gBZl1J13PR9-yKkkv2jNUJ8nD-0-FULqFI=s0 "4.png")
 
 *Set announcement* untuk mengakses *class conference* pada web.xml
 
-![enter image description here](https://lh6.googleusercontent.com/7PrFJLXOI19F54_S-m8e2CxAGZBZslNcQtWtCKNKmg=s0 "5.png")
+![enter image description here](https://lh6.googleusercontent.com/SbtJH79bdwUWgSzFYLpJW_sN6XSw25fwtt4fPbnQ1dM=s0 "5.png")
 
 *Set get announcement* untuk mengakses *class conference* pada ConferenceApi.java 
 
-![enter image description here](https://lh5.googleusercontent.com/Fe4SFZdLjzilU41Wz13tLIR2-Ew6QRGOJ6jQ0M9mJg=s0 "6.png")
+![enter image description here](https://lh4.googleusercontent.com/6eAAd0SI6Z_0wjMetHnzh0F6Xy3mcHJ2BmV_pRDgFqI=s0 "6.png")
 
 Proses *get announcement* dapat dilakukan sebagai berikut :
 
