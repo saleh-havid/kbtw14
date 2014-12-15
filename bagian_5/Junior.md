@@ -7,7 +7,7 @@ Pada dasarnya ketika *user* mengakses data dalam jumlah yang banyak ke *server* 
 
 *Memcache* bertujuan untuk menyimpan data atau informasi yang peting dengan kapasitas terbatas, sehingga *user* tidak perlu lagi mengakses ke *server*/*cloud* terlalu lama, dengan tujuan mempercepat proses *retrieve* data.
 
-![enter image description here](https://lh3.googleusercontent.com/Jla-J6wyOG3KYJygbsUZweYr8YF8kM44L_ZuPGp6Vg=s0 "1.png")
+![enter image description here](https://lh5.googleusercontent.com/YLp5jpAFxsfW2-9UIRcBX8bN-K80dRwKi3ga5bovJQ=s0 "1.png")
 
 ####Sifat *memcache* :
 
@@ -28,7 +28,7 @@ Pada dasarnya ketika *user* mengakses data dalam jumlah yang banyak ke *server* 
 
 *Objectify* dapat dilakukan dengan menambahkan *@Cache* pada *source code*
 
-![enter image description here](https://lh5.googleusercontent.com/hh2EFn8sk93luVN1uL4M9AlGMH9CTmEaHkFzvtSWXQ=s0 "2.png")
+![enter image description here](https://lh4.googleusercontent.com/2hmmWqp8ha4ojBN_AeX2wW_vCH-Ck6BDp3y7sHoJyQ=s0 "2.png")
 
 Penggunaan *memcache* pada *conference* dan *profile class*, ada beberapa langkah yang harus dilakukan :
 
