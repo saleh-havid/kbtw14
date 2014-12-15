@@ -31,10 +31,10 @@ Data store adalah database yang berjalan diatas Google Cloud. Data store merupak
 
 Datastore mempunyai paradigma NoSQL atau database non-relational, semua data object yang disimpan dianggap sebagai suatu entitas, dan setiap entitas mempunyai satu atau lebih properties/atribut. Untuk membedakan satu entitas dengan entitas lain digunakan sebuah parameter bernama kind(jenis), dan juga key sebuah atribut unik yang membedakan antar kind.
 
->- *KINDS*
->- *ENTITIES*
->- *PROPERTIES*
-***
++ *KINDS*
++ *ENTITIES*
++ *PROPERTIES*
+
 >- KINDS	:	adalah jenis-jenis class. Class terdapat pada aplikasi server. Class-class tersebut tersebut nantinya digunakan sebagai media yang digunakan aplikasi untuk memuat informasi dan menyimpan informasi tersebut pada data store.
 >- ENTITIES 	:	adalah semua data informasi yang disebut juga data objek yang disimpan di datastore. Untuk membedakan satu entitas dengan entitas lain digunakan sebuah parameter bernama kind(jenis). 
 >- PROPERTIES : 	adalah semacam field-field atau colum-colum yang digunakan untuk menyimpan entitas.n setiap entitas mempunyai satu atau lebih properties/atribut.
