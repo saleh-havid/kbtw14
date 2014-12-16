@@ -1,7 +1,7 @@
 # Bagian 3
 Elvanno Hatorangan  / 23213051 -- EL6240 Komputasi Bergerak dan Teknologi Web
 
-### Lesson : Storing an Retrieving Data
+### Lesson 3: Storing an Retrieving Data
 Bagian Kedua - Video :24-39
 ## *Key Conflict*
 #### Apa itu Key Conflict?
