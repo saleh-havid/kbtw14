@@ -1,10 +1,10 @@
 # Lesson 6 - App Engine and Mobile Apps
 
-_Oleh Reza Jatnika - 23212339_
+_Oleh [Reza Jatnika](https://github.com/rezajatnika/) - 23212339_
 
 Bagian ini memaparkan tentang penggunaan Conference App server (App Engine backend)
 untuk mobile client (aplikasi Android pada course ini) dengan memanfaatkan
-Google Cloud Endpoints.
+[Google Cloud Endpoints](https://cloud.google.com/appengine/docs/java/endpoints/).
 
 ## Google Cloud Endpoints
 Google Cloud Endpoints merupakan kumpulan _tools_ dan _libraries_ yang dapat
@@ -13,7 +13,7 @@ Endpoints dapat dengan mudah membuat web backend untuk aplikasi mobile seperti A
 atau Apple iOS.
 
 Untuk para mobile developer, Endpoints menyediakan cara sederhana untuk mengembangkan
-web backend dan infrastuktur penting seperti OAuth 2.0 authentication. Karena API backend
+web backend dan infrastuktur penting seperti [OAuth 2.0](https://developers.google.com/accounts/docs/OAuth2) authentication. Karena API backend
 adalah aplikasi App Engine, developer dapat menggunakan semua service yang ada di App Engine
 seperti, Datastore, Cloud Storage, Mail, Task Queues, dan lainnya. Serta dengan menggunakan
 App Engine, developer terbebas dari pekerjaan system admin seperti load balancing dan server
@@ -60,7 +60,7 @@ Ikuti langkah-langkah selanjutnya untuk mengisi informasi dari key tersebut.
 
 ### Client IDs in the Google Developers Console
 Untuk menggunakan API dan authentication system pada app backend oleh Android client, dibutuhkan
-Android Client ID pada developers console. Client ID ini berisi certificate fingerprint (SHA1)
+Android Client ID pada [developers console](http://console.developers.google.com/). Client ID ini berisi certificate fingerprint (SHA1)
 yang diisi sesuai SHA1 dari key yang dibuat.
 
 Untuk melihat SHA1 dari key:
@@ -73,7 +73,7 @@ Contoh output dari command ini:
 
 Buka Google Developers Console, kemudian buat Client ID yang baru seperti gambar di bawah ini.
 
-![Android Client ID](https://lh5.googleusercontent.com/a2qPz8keywECShaBanqrQ2WhGNl35S4fujPJ_hlQrH9k0eZXJ4gJG-Y2nK3RQr1qLdNSywR15XK-I3MD9SiO6yvM01WqE6VHlbDemjT_iuhYrYV8U9PYgJ93aeLsfOsKQQ)
+![Android Client ID](https://s3.amazonaws.com/media-p.slid.es/uploads/rezajatnika/images/749357/Screenshot_2014-10-22_10.51.47.png)
 
 Isikan field sesuai dengan data yang dibutuhkan. Kemudian pada source code aplikasi App Engine, buka
 `src/main/java/com/google/devrel/training/conference/Constants.java` dan ganti konstanta `ANDROID_CLIENT_ID` sesuai dengan yang telah dibuat.
@@ -101,7 +101,11 @@ Ganti `WEB_CLIENT_ID` pada file `app/src/main/java/com/udacity/devrel/training/c
 dengan Client ID yang digunakan.
 
 Tambahkan client library yang dibuat tadi ke Android project. Copy ke `app/libs`. Klik kanan dan "add as library"
-kemudian refresh. Ganti imports dan other usages dari `com.appspot.udacity_extras.conference` sesuai dengan client
+kemudian refresh.
+
+![Library](https://s3.amazonaws.com/media-p.slid.es/uploads/rezajatnika/images/749366/Screenshot_2014-10-22_11.03.03.png)
+
+Ganti imports dan other usages dari `com.appspot.udacity_extras.conference` sesuai dengan client
 library yang digukanan.
 
 ![Imports](https://lh4.googleusercontent.com/AvJTxpDjxN-5Y-IHSKPhzutF8OEy3UtnI90IF_giZ38o80Szn_ksFh2yBJGeEwLdNuP5ey5kpR0vvx1Nxi7o1O1cK1h26X9HZd_VIzDRYTbrWpvvKSWPdwFu7l0krqVWvg)
