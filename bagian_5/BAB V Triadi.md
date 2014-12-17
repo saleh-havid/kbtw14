@@ -128,10 +128,12 @@ Dalam *pull queues* apabila suatu *task* gagal diproses, kita bisa mengatur agar
 </queue-entries>```
 
 ####So, which queue - Push or Pull ?
-|  | Push | Pull |
-| -- | -- | -- |
-| Package Delivery Service | &#10008; | &#10003;|
-| Code Review | &#10008; | &#10003; |
-| Batch processing images | &#10003; | &#10008;|
+
+* Package Delivery Service -- ```Pull Queue``` &#10003;
+
+* Code Review -- ```Pull Queue``` &#10003;
+
+* Batch processing images -- ```Push Queue``` &#10003;
+
 
 
