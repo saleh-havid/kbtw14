@@ -6,8 +6,6 @@
 
 ##***Consistency Models and Transactions in Datastore***
 
-[TOC]
-
 ###***Datastore Commit Process***
 *Datastore commit process* mendeskripsikan tentang konsistensi aturan-aturan untuk menyimpan data. *Datastore* memiliki dua jenis konsistensi model, yaitu:
 
@@ -110,11 +108,11 @@ Salah satu fungsi yang belum diisi pada aplikasi *Conference Central* adalah reg
     
 Pada pemrograman ini akan digunakan properti "*conferences to attend*" untuk mengetahui konferenesi mana saja yang akan dihadiri oleh pengguna. Properti ini juga akan digunakan di *profile entity* yang ada di *class* profil pada *Profile.java*. Berikut *script*-nya.
 ####***Profile.java***
-> pada bagian bertanda <i class="icon-pencil"></i>
+> pada bagian bertanda (---)<i class="icon-pencil"></i>
      
     @Id String userId;
     
-<i class="icon-pencil"></i>
+(---)<i class="icon-pencil"></i>
 
     /**
      * Public constructor for Profile.
