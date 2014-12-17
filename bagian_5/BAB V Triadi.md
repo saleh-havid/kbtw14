@@ -39,7 +39,8 @@ Pada ```index.html``` :
       <input type="submit">
     </form>
   </body>
-</html>```
+</html>
+```
 
 Pada ```Enqueue.java``` :
 ```
@@ -59,7 +60,8 @@ public class Enqueue extends HttpServlet {
 
         response.sendRedirect("/");
     }
-}```
+}
+```
 
 Pada ```Worker.java``` :
 ```
@@ -70,7 +72,8 @@ public class Worker extends HttpServlet {
         String key = request.getParameter("key");
         // Do something with key.
     }
-}```
+}
+```
 
 *Task* yang ditambahkan pada *queue* ini akan dieksekusi dengan memanggil *request handler* di URL ```/worker``` dengan parameter ```key```. App Engine akan mengeksekusi sesuai dengan konfigurasi yang ada di ```queue.xml```, atau dengan menggunakan konfigurasi *default* yakni 5 *tasks* per detik.
 
@@ -81,7 +84,8 @@ Kita bisa mengatur konfigurasi pada ```queue.xml``` seperti contoh berikut :
     <name>emailqueue</name>
     <rate>1/s</rate>
   </queue>
-</queue-entries>```
+</queue-entries>
+```
 
 #### 2. Pull Queue
 **Pull Queue** dapat membuat *task consumer*, baik aplikasi kita sendiri maupun kode yang berada diluar aplikasi kita, untuk memakai perintah/*task* pada waktu tertentu untuk diproses dalam jangka waktu tertentu pula. *Pull queue* memberi kita kontrol yang lebih besar pada saat *task* diproses, dan juga mengizinkan kita untuk mengintegrasi aplikasi kita dengan kode selain dari App Engine ( menggunakan *Task Queue REST API *)
@@ -105,7 +109,8 @@ Sama halnya dengan *Push queues*, untuk mengkonfigurasi *Pull queues* dilakukan 
       <writer-email>bar@foo.com</writer-email>  <!--  can insert tasks, in addition to rights granted by being a user_email above -->
     </acl>
   </queue>
-</queue-entries>```
+</queue-entries>
+```
 
 Kita bisa menspesifikkan suatu nama *pull queue* dengan menambah elemen ```<mode>pull</mode>``` di file ```queue.xml``` tersebut.
 
@@ -125,7 +130,8 @@ Dalam *pull queues* apabila suatu *task* gagal diproses, kita bisa mengatur agar
       <task-retry-limit>7</task-retry-limit>
     </retry-parameters>
   </queue>
-</queue-entries>```
+</queue-entries>
+```
 
 ####So, which queue - Push or Pull ?
 
