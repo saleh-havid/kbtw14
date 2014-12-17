@@ -90,6 +90,22 @@ Navigasi ke library client source code yang telah dibuat di `/target/endpoints-c
 Library yang dibuat dalam bentuk JAR terdapat di `/target/<yourProjectVersion>.<versionString>-rc-SNAPSHOT.jar`.
 
 ### Android Application Source Code
-Download [source code untuk aplikasi Android](https://github.com/udacity/conference-central-android-app/archive/master.zip) ini atau dengan menggunakan git.
+Download [source code untuk aplikasi Android](https://github.com/udacity/conference-central-android-app/archive/master.zip) ini atau dengan menggunakan `git`.
 
     $ git clone git@github.com:udacity/conference-central-android-app.git
+
+Import source code ini ke Android Studio. Install package yang dibutuhkan dengan membuka Tools > Android > Android SDK
+(Google Repository, Google Play Services, dan Built Tools 19).
+
+Ganti `WEB_CLIENT_ID` pada file `app/src/main/java/com/udacity/devrel/training/conference/android/AppConstants.java`
+dengan Client ID yang digunakan.
+
+Tambahkan client library yang dibuat tadi ke Android project. Copy ke `app/libs`. Klik kanan dan "add as library"
+kemudian refresh. Ganti imports dan other usages dari `com.appspot.udacity_extras.conference` sesuai dengan client
+library yang digukanan.
+
+![Imports](https://lh4.googleusercontent.com/AvJTxpDjxN-5Y-IHSKPhzutF8OEy3UtnI90IF_giZ38o80Szn_ksFh2yBJGeEwLdNuP5ey5kpR0vvx1Nxi7o1O1cK1h26X9HZd_VIzDRYTbrWpvvKSWPdwFu7l0krqVWvg)
+
+### Create and Sign the APK
+Pada Android Studio, Build > Generate Signed APK, pilih keystore yang digunakan, dan create APK. APK yang dibuat berada
+di `app/app.apk`
