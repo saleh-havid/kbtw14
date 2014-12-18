@@ -3,6 +3,7 @@
 **Tugas Mata Kuliah EL6240 - Komputasi Bergerak dan Teknologi Web**
 *oleh Wervyan Shalannanda - 23213145*
 
+
 ##***Consistency Models and Transactions in Datastore***
 
 ###***Datastore Commit Process***
@@ -90,3 +91,281 @@ Selain aturan di atas, aturan di atas, sistem dapat mengimplementasikan aturan l
 - Satu transaksi hanya dapat mengubah maksimum 5 grup *ancestor* (atau grup entitas);
 - Satu transaksi harus selesai dalam 60 detik;
 - Buat transaksi sesingkat mungkin, dll.
+
+
+###**Latihan Pemrograman**
+
+Salah satu fungsi yang belum diisi pada aplikasi *Conference Central* adalah registrasi untuk menghadiri konferensi. Proses registrasi untuk suatu konferensi melibatkan beberapa aktivitas terpisah, termasuk melakukan *update* profil pengguna, mengetahui konferensi yang telah didaftarkan, dan mengurangi jumlah kursi yang tersedia pada suatu konferensi. Selain itu, dibuat juga aplikasi untuk menentukan *user* yang mendapatkan kursi apabila hanya tersisa satu kursi dan ada beberapa *user* yang mendaftar dengan menggunakan *transaction*. Berikut ini adalah struktur umum dari *transactions*.
+    
+    // Transactions
+	<T> result = ofy().transact(new Work<t>(){
+		public <t> run (){
+			//do stuff
+			//do more stuff
+			return <T>;
+		}
+	};
+    
+Pada pemrograman ini akan digunakan properti "*conferences to attend*" untuk mengetahui konferenesi mana saja yang akan dihadiri oleh pengguna. Properti ini juga akan digunakan di *profile entity* yang ada di *class* profil pada *Profile.java*. Berikut *script*-nya.
+####***Profile.java***
+> pada bagian bertanda (---)<i class="icon-pencil"></i>
+     
+    @Id String userId;
+    
+(---)<i class="icon-pencil"></i>
+
+    /**
+     * Public constructor for Profile.
+     * @param userId The user id, obtained from the email
+     * @param displayName Any string user wants us to display him/her on this system.
+     * @param mainEmail User's main e-mail address.
+     * @param teeShirtSize The User's tee shirt size
+     *
+     */
+    public Profile (String userId, String displayName, String mainEmail, TeeShirtSize teeShirtSize) {
+        this.userId = userId;
+        this.displayName = displayName;
+        this.mainEmail = mainEmail;
+        this.teeShirtSize = teeShirtSize;
+    }
+
+dengan menggunakan *script berikut*
+
+        /**
+     * Keys of the conferences that this user registers to attend.
+     */
+    private List<String> conferenceKeysToAttend = new ArrayList<>(0);
+
+dan mengimport List
+
+    import java.util.List;
+
+####***ConferenceApi.java***
+Selanjutnya, pada "*ConferenceApi.java*", tambahkan fungsi *create conference*  pada *class* *Conference* dan fungsi registerForConference pada *class* *WrappedBoolean*, tambahkan *script* berikut.
+
+<i class="icon-trash"></i> ***Conference***
+
+     @ApiMethod(name = "createConference", path = "conference", httpMethod = HttpMethod.POST)
+    public Conference createConference(final User user, final ConferenceForm conferenceForm)
+        throws UnauthorizedException {
+        if (user == null) {
+            throw new UnauthorizedException("Authorization required");
+        }
+
+        // TODO (Lesson 4)
+        // Get the userId of the logged in User
+        String userId = user.getUserId();
+
+        // TODO (Lesson 4)
+        // Get the key for the User's Profile
+        Key<Profile> profileKey = Key.create(Profile.class, userId);
+
+        // TODO (Lesson 4)
+        // Allocate a key for the conference -- let App Engine allocate the ID
+        // Don't forget to include the parent Profile in the allocated ID
+        final Key<Conference> conferenceKey = factory().allocateId(profileKey, Conference.class);
+
+        // TODO (Lesson 4)
+        // Get the Conference Id from the Key
+        final long conferenceId = conferenceKey.getId();
+
+        // TODO (Lesson 4)
+        // Get the existing Profile entity for the current user if there is one
+        // Otherwise create a new Profile entity with default values
+        Profile profile = getProfileFromUser(user);
+
+        // TODO (Lesson 4)
+        // Create a new Conference Entity, specifying the user's Profile entity
+        // as the parent of the conference
+        Conference conference = new Conference(conferenceId, userId, conferenceForm);
+
+        // TODO (Lesson 4)
+        // Save Conference and Profile Entities
+         ofy().save().entities(conference, profile).now();
+
+         return conference;
+         }
+
+<i class="icon-trash"></i> ***WrappedBoolean***
+
+    //Start transaction 
+        WrappedBoolean result = ofy().transact(new Work<WrappedBoolean>() {
+            @Override
+            public WrappedBoolean run() {
+                try {
+
+                // Get the conference key
+                // Will throw ForbiddenException if the key cannot be created
+                Key<Conference> conferenceKey = Key.create(websafeConferenceKey);
+
+                // Get the Conference entity from the datastore
+                Conference conference = ofy().load().key(conferenceKey).now();
+
+                // 404 when there is no Conference with the given conferenceId.
+                if (conference == null) {
+                    return new WrappedBoolean (false,
+                            "No Conference found with key: "
+                                    + websafeConferenceKey);
+                }
+
+                // Get the user's Profile entity
+                Profile profile = getProfileFromUser(user);
+
+                // Has the user already registered to attend this conference?
+                if (profile.getConferenceKeysToAttend().contains(
+                        websafeConferenceKey)) {
+                    return new WrappedBoolean (false, "Already registered");
+                } else if (conference.getSeatsAvailable() <= 0) {
+                    return new WrappedBoolean (false, "No seats available");
+                } else {
+                    // All looks good, go ahead and book the seat
+                    profile.addToConferenceKeysToAttend(websafeConferenceKey);
+                    conference.bookSeats(1);
+
+                    // Save the Conference and Profile entities
+                    ofy().save().entities(profile, conference).now();
+                    // We are booked!
+                    return new WrappedBoolean(true, "Registration successful");
+                }
+
+                }
+                catch (Exception e) {
+                    return new WrappedBoolean(false, "Unknown exception");
+
+                }
+            }
+
+Untuk lebih jelasnya, silakan akses link berikut.
+[Ud859 Lesson 4 - Video 48 - Register for conference in a transaction](https://www.udacity.com/course/viewer#!/c-ud859/l-1219418587/m-1497718613)
+
+Selanjutnya, tambahkan fungsi *Query for conference* dan *Get conference to attend* pada *class* "*Collection < Conference >*", *Unregistering from a Conference* pada *class* *Wrapped Boolean*
+<i class="icon-trash"></i>***Collection < Conference >***
+***Query for a conference***
+
+     /** Code to add at the start of querying for conferences **/
+
+
+    @ApiMethod(
+            name = "queryConferences_nofilters",
+            path = "queryConferences_nofilters",
+            httpMethod = HttpMethod.POST
+    )
+    public List<Conference> queryConferences_nofilters() {
+        // Find all entities of type Conference
+        Query<Conference> query = ofy().load().type(Conference.class).order("name");
+
+        return query.list();
+    }
+
+   
+
+     /**
+         * Queries against the datastore with the given filters and returns the result.
+         *
+         * Normally this kind of method is supposed to get invoked by a GET HTTP method,
+         * but we do it with POST, in order to receive conferenceQueryForm Object via the POST body.
+         *
+         * @param conferenceQueryForm A form object representing the query.
+         * @return A List of Conferences that match the query.
+         */
+        @ApiMethod(
+                name = "queryConferences",
+                path = "queryConferences",
+                httpMethod = HttpMethod.POST
+        )
+        public List<Conference> queryConferences(ConferenceQueryForm conferenceQueryForm) {
+            Iterable<Conference> conferenceIterable = conferenceQueryForm.getQuery();
+            List<Conference> result = new ArrayList<>(0);
+            List<Key<Profile>> organizersKeyList = new ArrayList<>(0);
+            for (Conference conference : conferenceIterable) {
+                organizersKeyList.add(Key.create(Profile.class, conference.getOrganizerUserId()));
+                result.add(conference);
+            }
+            // To avoid separate datastore gets for each Conference, pre-fetch the Profiles.
+            ofy().load().keys(organizersKeyList);
+            return result;
+        }
+	
+***Get Conference to Attend***
+	
+    public Collection<Conference> getConferencesToAttend(final User user)
+            throws UnauthorizedException, NotFoundException {
+        // If not signed in, throw a 401 error.
+        if (user == null) {
+            throw new UnauthorizedException("Authorization required");
+        }
+        // TODO
+        // Get the Profile entity for the user
+        Profile profile = ofy().load().key(Key.create(Profile.class, user.getUserId())).now();
+        if (profile == null) {
+            throw new NotFoundException("Profile doesn't exist.");
+        }
+        
+        // TODO
+        // Get the value of the Profile's conferenceKeysToAttend property
+        List<String> keyStringsToAttend = profile.getConferenceKeysToAttend();
+        List<Key<Conference>> keysToAttend = new ArrayList<>();
+        for (String keyString : keyStringsToAttend) {
+            keysToAttend.add(Key.<Conference>create(keyString));
+        }
+        
+        // TODO
+        // Iterate over keyStringsToAttend,
+        // and return a Collection of the
+        // Conference entities that the user has registered to attend
+        
+        return ofy().load().keys(keysToAttend).values();
+    }
+
+Untuk lebih jelasnya, silakan akses link berikut.
+[Ud859 Lesson 4 - Video 53 - Conferences to Attend](https://www.udacity.com/course/viewer#!/c-ud859/l-1219418587/e-1588338535/m-1497718617)
+
+<i class="icon-trash"></i>***WrappedBoolean***
+
+    public WrappedBoolean unregisterFromConference(final User user,
+                                            @Named("websafeConferenceKey")
+                                            final String websafeConferenceKey)
+            throws UnauthorizedException, NotFoundException, ForbiddenException, ConflictException {
+        // If not signed in, throw a 401 error.
+        if (user == null) {
+            throw new UnauthorizedException("Authorization required");
+        }
+
+        WrappedBoolean result = ofy().transact(new Work<WrappedBoolean>() {
+            @Override
+            public WrappedBoolean run() {
+                Key<Conference> conferenceKey = Key.create(websafeConferenceKey);
+                Conference conference = ofy().load().key(conferenceKey).now();
+                // 404 when there is no Conference with the given conferenceId.
+                if (conference == null) {
+                    return new  WrappedBoolean(false,
+                            "No Conference found with key: " + websafeConferenceKey);
+                }
+
+                // Un-registering from the Conference.
+                Profile profile = getProfileFromUser(user);
+                if (profile.getConferenceKeysToAttend().contains(websafeConferenceKey)) {
+                    profile.unregisterFromConference(websafeConferenceKey);
+                    conference.giveBackSeats(1);
+                    ofy().save().entities(profile, conference).now();
+                    return new WrappedBoolean(true);
+                } else {
+                    return new WrappedBoolean(false, "You are not registered for this conference");
+                }
+            }
+        });
+        // if result is false
+        if (!result.getResult()) {
+            if (result.getReason().contains("No Conference found with key")) {
+                throw new NotFoundException (result.getReason());
+            }
+            else {
+                throw new ForbiddenException(result.getReason());
+            }
+        }
+        // NotFoundException is actually thrown here.
+        return new WrappedBoolean(result.getResult());
+    }
+
+Untuk lebih jelasnya, silakan akses link berikut.
+[Ud859 Lesson 4 - Video 54 - Unregistering From a Conference](https://www.udacity.com/course/viewer#!/c-ud859/l-1219418587/m-1497718619)
