@@ -10,11 +10,11 @@ Saleh Havid / 23213026
 #### Cara membuat fungsi endpoint
 Seperti yang telah dijelaskan pada bagian 2 sebelumnya, suatu proyek app engine terdiri dari beberapa file, pada bagian sebelumnya hello world hanya terdapat 2 buah fungsi yaitu *generic greeting* dan *greet by name*, tampilan muka dari proyek hello world tersebut adalah seperti gambar dibawah ini :
 
-![](https://lh4.googleusercontent.com/Ob_rqHUYgT4NejFu-EFW6vv9vLB3OtihhWOWvjDzCJw9c53M1OcrD30qTqBF1ET8UjkUzkMwx0s=w1332-h547)
+![img1](https://lh5.googleusercontent.com/-26y0J4wD4jY/VJlhTnwWhOI/AAAAAAAAAN8/kcbTRF3y6tA/w479-h352-no/hello%2Bworld.png)
 
 pada bagian ini kita akan menambahkan suatu fungsi *greet by periods* yaitu fungsi yang menyapa pengguna berdasarkan waktu yang dipilih oleh pengguna. tampilan muka dari proyek hello world + periods adalah seperti gambar dibawah ini :
 
-![](https://lh3.googleusercontent.com/pk-eGzMmOmS3HeDrfKKoVqkkQkCe4DST8us2nQRaXtRpg0DCeTPkkXcvzEExvTpdUxVkmcTtFfk=w1332-h547)
+![img2](https://lh6.googleusercontent.com/-3H1DoRBIUiY/VJlhTsiijUI/AAAAAAAAAN8/bZfYCS6QUI0/w568-h228-no/hello%2B%2B%2B.png)
 
 Untuk menambahkan fungsi *greet by periods* kita perlu menambahkan kode pada beberapa file yaitu:
 
@@ -36,6 +36,7 @@ A. Membuat tambahan button dengan opsi waktu pada file index.html
 
 ```
 
+
 B. Menambahkan kode javascript pada file node.js untuk memanggil fungsi endpoints ketika pengguna mengklik button html yang dibuat
 ```
 function enableButtons () {
@@ -56,6 +57,7 @@ function greetByTimeOfDay () {
 }
 ```
 
+
 C. Menambahkan fungsi endpoints *(greetByPeriods)* pada file HelloWorldEndpoints.java yang akan dipanggil oleh javascript dan memanggil HelloClass dengan parameter name + timeofday.
 ```
 public class HelloWorldEndpoints {
@@ -67,6 +69,7 @@ public class HelloWorldEndpoints {
     }
 }
 ```
+
 D. Menambahkan class turunan dari HelloClass pada file HelloClass.java yang menerima parameter name + timeofday dan mengembalikan object message.
 
 ```
@@ -77,22 +80,24 @@ public class HelloClass {
 }
 
 ```
-Berikut adalah tampilan tatap muka ketika tombol yang berisi fungsi yang kita buat ditekan. ![](https://lh6.googleusercontent.com/VW7fPwd7u2uIbkBRfr_W_7ExYsSxD9So4iWfBHvCViYXt8b5-fYpho5W1CbcRx7SsdQMoPkzUN8=w1332-h547)
+Berikut adalah tampilan tatap muka ketika tombol yang berisi fungsi yang kita buat ditekan.
+
+![img3](https://lh3.googleusercontent.com/-2Vq1_SEMIFY/VJlhTrZduWI/AAAAAAAAAN8/_4uzyw-6VXg/w770-h581-no/hello%2B%2B%2B%2B.png)
 
 
 #### Cara menggunakan API explorer
 
 Kita dapat mengecek fungsi endpoint yang kita buat dengan menjalankan applikasi yang kita buat dan membukanya dengan halaman tatap muka, namun kita juga dapat mengecek secara langsung tanpa halaman tatap muka fungsi endpoint yang kita buat dengan menggunakan API explorer. Dibawah ini dapat dilihat proyek hello world mempunyai 3 fungsi endpoints yaitu : greetByPeriods, sayHello dan sayHelloByName
 
-![](https://lh5.googleusercontent.com/HTYcuXuZdJpcrx71FTLrtM1kv3RacShb-BEB31WeFZPQC5u2n66fga8JWqKpl4qffDbMduBG8Qg=w1332-h547)
+![img4](https://lh5.googleusercontent.com/-vKwAHRfiHqY/VJlhTiX5d6I/AAAAAAAAAN8/d8MHjjwZApI/w749-h470-no/API%2Bexplorer.png)
 
 Kita bisa mencoba fungsi yang baru kita buat yaitu greetByPeriods menggunakan Api explorer, fungsi greetByPeriods membutuhkan 2 parameter yaitu name dan timeofday
 
-![](https://lh4.googleusercontent.com/PVN2eBJ7qmQNAgZ9Nb_3WKpaKb2fWRAddr7q4XG9PtlTjzPCjb5Hb4M3PmtCTQ17F-SjzGm5Zd8=w1332-h547)
+![img5](https://lh4.googleusercontent.com/-axUBtStwUCE/VJlhTr3apvI/AAAAAAAAAN8/-PzJXyGLfm0/w979-h527-no/API%2Bexplorer%2B1.png)
 
 Setelah kita mengisi parameter yang dibutuhkan dan mengexecute fungsi endpoint greetByPeriods maka dapat dilihat hasil dari fungsi endpoint greetByPeriods yaitu
 
-![](https://lh6.googleusercontent.com/EHQyE3wbCxxF6CCZ1cVchBwfEWtrJ4DknKiB2HnpGqLkV_aNd02e3y_5y6ou3el7gE6u07g9lfE=w1332-h547)
+![img6](https://lh6.googleusercontent.com/-atWb5--wkIQ/VJlhTtpFUyI/AAAAAAAAAN8/yBVq2mH3E_I/w979-h533-no/API%2Bexplorer%2B2.png)
 
 
 #### Pengenalan tentang conference central
@@ -100,17 +105,17 @@ Setelah kita mengisi parameter yang dibutuhkan dan mengexecute fungsi endpoint g
 Bagian terakhir dari modul 2 adalah pengenalan tentang proyek conference central yang akan digunakan sebagai contoh dan target akhir dari pembelajaran seluruh modul.
 
 Conference central adalah suatu website yang digunakan untuk mengatur kegiatan pertemuan, conference central memiliki beberapa menu utama yaitu:
-* user dapat login mengggunakan account google
-![](https://lh4.googleusercontent.com/Qd4eU0pkvbzrekZPBpTkvC5CblnIGJpVOV6GVjtvnFFhGz958FXagsYva1YbTzxvpKS2ebGGIuk=w1332-h547)
-* user dapat melihat pertemuan yang sudah dibuat
-![](https://lh6.googleusercontent.com/CghjGEResYcsj1bLAsZau5gpnRwKzF47DVxpe0X5-pefPIx1msKTy-UwBsYd466IQULIrhYO-h4=w1332-h547)
-* user dapat membuat pertemuan baru
-![](https://lh3.googleusercontent.com/HxssNmBaGS4WB3mbwMP7PsuckKO-JxlzChmWZEBPSNprlCqshADFKIK-eNqQdzLp2UttDFsYalI=w1332-h547)
-* user dapat mengupdate profilenya.
-![](https://lh5.googleusercontent.com/tVHLMD5fWkkfXT3va0iyvXb9CQmpGbcs8UfgmvFkOBLputPN-tZgX2iys1clEbCKgmBUonvIUvo=w1332-h547)
+* User dapat login mengggunakan account google
+![img7](https://lh4.googleusercontent.com/-oK8cEvVzcVQ/VJlhToqWxtI/AAAAAAAAAN8/d3jnbHE0-5Q/w835-h470-no/conference%2Bcentral%2B1.png)
+* User dapat melihat pertemuan yang sudah dibuat
+![img8](https://lh3.googleusercontent.com/-Hl8-hsMS6mQ/VJlhTiaukHI/AAAAAAAAAN8/aisSST0Nd6M/w979-h517-no/conference%2Bcentral%2B10.png)
+* User dapat membuat pertemuan baru
+![img9](https://lh4.googleusercontent.com/-PDf01BSy70w/VJlhTmUm6RI/AAAAAAAAAN8/fbTTjPievLo/w979-h497-no/conference%2Bcentral%2B11.png)
+* User dapat mengupdate profilenya.
+![img10](https://lh6.googleusercontent.com/-Ovh0MIPH6kc/VJlhTv0NmuI/AAAAAAAAAN8/PMizb1q5a6A/w979-h461-no/conference%2Bcentral%2B12.png)
 
 
-Module selanjutnya akan membahas cara pembuatan conference central menggunakan google app engine. anda dapat melihat conference central versi lengkap yang sudah dibuat oleh udacity pada halaman berikut :
+Modul selanjutnya akan membahas cara pembuatan conference central menggunakan google app engine. anda dapat melihat conference central versi lengkap yang sudah dibuat oleh udacity pada halaman berikut :
 
 [conference central udacity at appspot.com](https://conference-central-dot-udacity-extras.appspot.com/)
 
