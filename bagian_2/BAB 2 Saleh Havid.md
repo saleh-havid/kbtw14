@@ -17,6 +17,7 @@ pada bagian ini kita akan menambahkan suatu fungsi *greet by periods* yaitu fung
 ![](https://lh3.googleusercontent.com/pk-eGzMmOmS3HeDrfKKoVqkkQkCe4DST8us2nQRaXtRpg0DCeTPkkXcvzEExvTpdUxVkmcTtFfk=w1332-h547)
 
 Untuk menambahkan fungsi *greet by periods* kita perlu menambahkan kode pada beberapa file yaitu:
+
 A. Membuat tambahan button dengan opsi waktu pada file index.html
 
 ```
